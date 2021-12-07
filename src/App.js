@@ -1,4 +1,4 @@
-import Container from "./components/Container";
+import Container from "./components/container";
 import GlobalStyle from "./globalStyles";
 import styled from "styled-components";
 
