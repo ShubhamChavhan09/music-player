@@ -14,10 +14,12 @@ body{
     font-family: 'Roboto', sans-serif;
 
     p {
-        font-size: 11px;
+        font-size: 10.5px;
         padding-top: 6px;
       }
 }
+
+
 `;
 
 export default GlobalStyle;
