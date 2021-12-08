@@ -12,6 +12,11 @@ body{
     color: #C7C5D0;
     // font-family: 'Montserrat', sans-serif;
     font-family: 'Roboto', sans-serif;
+
+    p {
+        font-size: 11px;
+        padding-top: 6px;
+      }
 }
 `;
 
