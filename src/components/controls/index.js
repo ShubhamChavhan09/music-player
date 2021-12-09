@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { BiShuffle } from "react-icons/bi";
 import { RiRepeat2Fill, RiRepeatOneFill } from "react-icons/ri";
 import { ImEqualizer2 } from "react-icons/im";
@@ -10,11 +10,45 @@ import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import styled from "styled-components";
 
 const Controls = ({ togglePlayPause, isPlaying, backTen, forwardTen }) => {
+  const [shuffle, setShuffle] = useState(false);
+  const [repeatOne, setRepeatOne] = useState(false);
+  const [repeat, setRepeat] = useState(false);
+
+  const shuffleRef = useRef();
+  const repeatOneRef = useRef();
+  const repeatRef = useRef();
+
+  const handleShuffle = (e) => {
+    setShuffle(!shuffle);
+    shuffleRef.current.style.setProperty(
+      "color",
+      `${shuffle ? "#5f27cd" : "#C7C5D0"}`
+    );
+  };
+  const handleRepeatOne = (e) => {
+    setRepeatOne(!repeatOne);
+    repeatOneRef.current.style.setProperty(
+      "color",
+      `${repeatOne ? "#5f27cd" : "#C7C5D0"}`
+    );
+  };
+  const handleRepeat = (e) => {
+    setRepeat(!repeat);
+    repeatRef.current.style.setProperty(
+      "color",
+      `${repeat ? "#5f27cd" : "#C7C5D0"}`
+    );
+  };
+
   return (
     <ControlBox>
       <Switch>
-        <BiShuffle />
-        <RiRepeatOneFill />
+        <Toggle ref={shuffleRef}>
+          <BiShuffle onClick={handleShuffle} />
+        </Toggle>
+        <Toggle ref={repeatOneRef}>
+          <RiRepeatOneFill onClick={handleRepeatOne} />
+        </Toggle>
       </Switch>
       <ButtonContainer>
         <Arrow>
@@ -34,8 +68,12 @@ const Controls = ({ togglePlayPause, isPlaying, backTen, forwardTen }) => {
         </Arrow>
       </ButtonContainer>
       <Switch>
-        <RiRepeat2Fill />
-        <ImEqualizer2 />
+        <Toggle ref={repeatRef}>
+          <RiRepeat2Fill onClick={handleRepeat} />
+        </Toggle>
+        <Toggle>
+          <ImEqualizer2 />
+        </Toggle>
       </Switch>
     </ControlBox>
   );
@@ -116,11 +154,6 @@ const Switch = styled.div`
   @media (max-width: 414px) {
     width: 70%;
   }
-
-  & > *:hover {
-    color: #666;
-    transition: all 0.3s ease;
-  }
 `;
 
 const ButtonContainer = styled.div`
@@ -171,5 +204,11 @@ const Arrow = styled.span`
     box-shadow: 5px 5px 8px rgba(255, 255, 255, 0.2),
       inset 0px 2.5px 5px rgba(55, 46, 152, 0.65);
     background: linear-gradient(327.56deg, #5d24d6 19.23%, #7e74ed 81.76%);
+  }
+`;
+
+const Toggle = styled.span`
+  &:active {
+    color: #5f27cd;
   }
 `;
