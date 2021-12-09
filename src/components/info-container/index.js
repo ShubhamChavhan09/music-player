@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Purple from "../../data/Purple.jpg";
 
 const InfoContainer = () => {
+  const handleClick = () => {};
+
   return (
     <Info>
       <Data>
@@ -20,7 +22,7 @@ const InfoContainer = () => {
           <p>Woodstock </p>
         </div>
         <Links>
-          <Circle>
+          <Circle onClick={handleClick}>
             <RiHeartFill />
           </Circle>
           <Circle>
@@ -47,6 +49,18 @@ const Info = styled.div`
   // box-shadow: 20px 20px 60px #c0bcd9, -20px -20px 60px #fffeff;
   box-shadow: 22px 16px 44px rgba(54, 48, 116, 0.3);
   display: flex;
+
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 0;
+  }
+  @media (max-width: 414px) {
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Data = styled.div`
@@ -59,6 +73,9 @@ const Data = styled.div`
   h3,
   p {
     margin: 0;
+    @media (max-width: 414px) {
+      margin: 2px;
+    }
   }
 
   h3 {
@@ -71,6 +88,12 @@ const Data = styled.div`
     border-radius: 16px;
     box-shadow: inset 5px 5px 8px rgba(255, 255, 255, 0.2),
       2.5px 2.5px 5px rgba(37, 5, 57, 0.51);
+  }
+
+  @media (max-width: 414px) {
+    padding: 20px;
+    text-align: center;
+    width: 100%;
   }
 `;
 
@@ -97,6 +120,7 @@ const Name = styled.p`
 `;
 
 const Circle = styled.span`
+  cursor: pointer;
   height: 25px;
   width: 25px;
   margin-right: 10px;
@@ -114,10 +138,20 @@ const Circle = styled.span`
     box-shadow: inset -5px -5px 8px #ffffff,
       inset 5px 5px 5px rgba(0, 0, 0, 0.05);
   }
+
+  & :hover {
+    color: #666;
+    transition: all 0.3s ease;
+  }
 `;
 
 const Links = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  @media (max-width: 414px) {
+    justify-content: space-evenly;
+    margin-top: 15px;
+  }
 `;
