@@ -13,7 +13,7 @@ const InfoContainer = () => {
     setfavorite(!favorite);
     circle1Ref.current.style.setProperty(
       "color",
-      `${favorite ? "#5f27cd" : "#C7C5D0"}`
+      `${!favorite ? "#5f27cd" : "#C7C5D0"}`
     );
   };
 
@@ -21,7 +21,7 @@ const InfoContainer = () => {
     setPlaylist(!playlist);
     circle2Ref.current.style.setProperty(
       "color",
-      `${playlist ? "#5f27cd" : "#C7C5D0"}`
+      `${!playlist ? "#5f27cd" : "#C7C5D0"}`
     );
   };
 

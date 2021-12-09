@@ -19,24 +19,24 @@ const Controls = ({ togglePlayPause, isPlaying, backTen, forwardTen }) => {
   const repeatRef = useRef();
 
   const handleShuffle = (e) => {
-    setShuffle(!shuffle);
     shuffleRef.current.style.setProperty(
       "color",
-      `${shuffle ? "#5f27cd" : "#C7C5D0"}`
+      `${!shuffle ? "#5f27cd" : "#C7C5D0"}`
     );
+    setShuffle(!shuffle);
   };
   const handleRepeatOne = (e) => {
     setRepeatOne(!repeatOne);
     repeatOneRef.current.style.setProperty(
       "color",
-      `${repeatOne ? "#5f27cd" : "#C7C5D0"}`
+      `${!repeatOne ? "#5f27cd" : "#C7C5D0"}`
     );
   };
   const handleRepeat = (e) => {
     setRepeat(!repeat);
     repeatRef.current.style.setProperty(
       "color",
-      `${repeat ? "#5f27cd" : "#C7C5D0"}`
+      `${!repeat ? "#5f27cd" : "#C7C5D0"}`
     );
   };
 
