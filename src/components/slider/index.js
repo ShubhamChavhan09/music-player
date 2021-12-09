@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-
 import styled from "styled-components";
 import Purple from "../../data/purple-haze.mp3";
 import Controls from "../controls";
@@ -23,6 +22,7 @@ const Slider = () => {
     // eslint-disable-next-line
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
+  // Calculate time to show in mm:ss
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
     const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
@@ -31,6 +31,7 @@ const Slider = () => {
     return `${returnedMinutes} : ${returnedSeconds}`;
   };
 
+  // Toggle Play / Pause track
   const togglePlayPause = () => {
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
@@ -54,19 +55,26 @@ const Slider = () => {
     changePlayerCurrentTime();
   };
 
+  // Changing Seek Bar width
   const changePlayerCurrentTime = () => {
     progressBar.current.style.setProperty(
       "--seek-width",
-      `${(progressBar.current.value / duration) * 100}%`
+      `${
+        (progressBar.current.value / Math.floor(audioPlayer.current.duration)) *
+        100
+      }%`
     );
     setCurrentTime(progressBar.current.value);
+    console.log(audioPlayer.current.duration);
   };
 
+  // Forward track by 10sec
   const forwardTen = () => {
     progressBar.current.value = Number(progressBar.current.value) + 10;
     changeRange();
   };
 
+  //Move songs back by 10sec
   const backTen = () => {
     progressBar.current.value = Number(progressBar.current.value) - 10;
     changeRange();
@@ -74,8 +82,8 @@ const Slider = () => {
 
   return (
     <Wrapper>
-      <audio ref={audioPlayer} src={Purple} preload="metadata"></audio>
       <Player>
+        <audio ref={audioPlayer} src={Purple} preload="metadata"></audio>
         <Controls
           isPlaying={isPlaying}
           togglePlayPause={togglePlayPause}
@@ -90,7 +98,6 @@ const Slider = () => {
               ref={progressBar}
               onChange={changeRange}
             />
-            {/* <Run style={{ width: `${seekWidth}` }}></Run> */}
           </Time>
           <Time>
             {/* current time */}
@@ -99,7 +106,7 @@ const Slider = () => {
             </div>
 
             {/* duration  */}
-            <p>{!isNaN(duration) && duration && calculateTime(duration)}</p>
+            <p>{!isNaN(duration) && calculateTime(duration)}</p>
           </Time>
         </div>
       </Player>
@@ -180,20 +187,18 @@ const ProgressBar = styled.input`
     inset 1.5px 1.5px 5px rgba(0, 0, 0, 0.05), inset -1.5px -1.5px 2.5px #ffffff;
 
   &::before {
-     content: " ";
+    content: "";
     height: 3px;
     width: var(--seek-width);
     background: linear-gradient(327.56deg, #5d24d6 19.23%, #7e74ed 81.76%);
-    // background: salmon;
     border-radius: 20px;
     position: absolute;
     top: 2.5px;
     left: 0;
     z-index: 2;
     cursor: pointer;
-    box-shadow: 0px 2px 3px rgba(43, 72, 180, 0.4);
-       inset 1px 1px 3px rgba(255, 255, 255, 0.4); 
-    
+    box-shadow: 0px 2px 3px rgba(43, 72, 180, 0.4) inset 1px 1px 3px
+      rgba(255, 255, 255, 0.4);
   }
 
   // for firefox
@@ -213,8 +218,8 @@ const ProgressBar = styled.input`
   // progress bar firefox
 
   &::-moz-range-progress {
-    background:linear-gradient(327.56deg, #5d24d6 19.23%, #7e74ed 81.76%);
-    border-radius:20px;
+    background: linear-gradient(327.56deg, #5d24d6 19.23%, #7e74ed 81.76%);
+    border-radius: 20px;
     height: 3px;
   }
 
@@ -222,7 +227,7 @@ const ProgressBar = styled.input`
     -webkit-appearance: none;
     height: 14px;
     width: 14px;
-    border: 4px solid #DEDDE3;
+    border: 4px solid #dedde3;
     background: linear-gradient(327.56deg, #5d24d6 19.23%, #7e74ed 81.76%);
     border-radius: 100%;
     padding: 8px;
