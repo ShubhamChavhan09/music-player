@@ -75,7 +75,7 @@ const Slider = () => {
   return (
     <Wrapper>
       <Player>
-        <audio ref={audioPlayer} src={Purple} preload="none"></audio>
+        <audio ref={audioPlayer} src={Purple} preload="metadata"></audio>
         <Controls
           isPlaying={isPlaying}
           togglePlayPause={togglePlayPause}
@@ -99,7 +99,7 @@ const Slider = () => {
             </div>
 
             {/* duration  */}
-            <p>{!isNaN(duration) && duration && calculateTime(duration)}</p>
+            <p>{duration && !isNaN(duration) && calculateTime(duration)}</p>
           </Time>
         </div>
       </Player>
@@ -187,7 +187,7 @@ const ProgressBar = styled.input`
     // background: salmon;
     border-radius: 20px;
     position: absolute;
-    top: 3px;
+    top: 2.5px;
     left: 0;
     z-index: 2;
     cursor: pointer;
@@ -222,7 +222,7 @@ const ProgressBar = styled.input`
     -webkit-appearance: none;
     height: 14px;
     width: 14px;
-    border: 4px solid #ffffff;
+    border: 4px solid #DEDDE3;
     background: linear-gradient(327.56deg, #5d24d6 19.23%, #7e74ed 81.76%);
     border-radius: 100%;
     padding: 8px;
