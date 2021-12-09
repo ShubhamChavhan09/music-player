@@ -14,7 +14,6 @@ const Container = () => {
 export default Container;
 
 const Main = styled.div`
-  margin: auto;
   width: 1120px;
   height: 500px;
   background: #e2ddff;
@@ -25,6 +24,14 @@ const Main = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    height: auto;
+    height: 45.2vh;
+    width: 100%;
+    margin: 20px;
+    padding: 0;
+  }
+
+  @media (max-width: 414px) {
+    min-height: 95vh;
+    justify-content: flex-start;
   }
 `;
