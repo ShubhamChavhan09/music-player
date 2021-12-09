@@ -11,17 +11,17 @@ const Slider = () => {
   const [currentTime, setCurrentTime] = useState(0);
 
   //referrence
-  const slider = useRef(); // for audio component
+  const audioPlayer = useRef(); // for audio component
   const progressBar = useRef(); // referrence to progress bar
   const animationRef = useRef(); // referrence to animation
 
   useEffect(() => {
-    const seconds = Math.floor(slider.current.duration);
+    const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(seconds);
     progressBar.current.max = seconds;
     changePlayerCurrentTime();
     // eslint-disable-next-line
-  }, [slider?.current?.loadedmetadata, slider?.current?.readyState]);
+  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
@@ -35,22 +35,22 @@ const Slider = () => {
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
     if (!prevValue) {
-      slider.current.play();
+      audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
-      slider.current.pause();
+      audioPlayer.current.pause();
       cancelAnimationFrame(animationRef.current);
     }
   };
 
   const whilePlaying = () => {
-    progressBar.current.value = slider.current.currentTime;
+    progressBar.current.value = audioPlayer.current.currentTime;
     changePlayerCurrentTime();
     animationRef.current = requestAnimationFrame(whilePlaying);
   };
 
   const changeRange = () => {
-    slider.current.currentTime = progressBar.current.value;
+    audioPlayer.current.currentTime = progressBar.current.value;
     changePlayerCurrentTime();
   };
 
@@ -75,7 +75,7 @@ const Slider = () => {
   return (
     <Wrapper>
       <Player>
-        <audio ref={slider} src={Purple} preload="none"></audio>
+        <audio ref={audioPlayer} src={Purple} preload="none"></audio>
         <Controls
           isPlaying={isPlaying}
           togglePlayPause={togglePlayPause}
@@ -131,7 +131,7 @@ const Wrapper = styled.div`
   @media (max-width: 414px) {
     width: 100%;
     inset: 0;
-    top: 420px;
+    top: 375px;
     padding-top: 20px;
     height: 220px;
   }

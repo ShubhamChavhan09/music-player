@@ -31,7 +31,7 @@ const Main = styled.div`
   }
 
   @media (max-width: 414px) {
-    min-height: 95vh;
+    height: 100%;
     justify-content: flex-start;
   }
 `;
