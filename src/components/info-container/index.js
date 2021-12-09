@@ -1,9 +1,29 @@
+import { useState, useRef } from "react";
 import { RiHeartFill, RiPlayListAddFill, RiShareFill } from "react-icons/ri";
 import styled from "styled-components";
 import Purple from "../../data/Purple.jpg";
 
 const InfoContainer = () => {
-  const handleClick = () => {};
+  const [favorite, setfavorite] = useState(false);
+  const [playlist, setPlaylist] = useState(false);
+  const circle1Ref = useRef();
+  const circle2Ref = useRef();
+
+  const handleFavorite = (e) => {
+    setfavorite(!favorite);
+    circle1Ref.current.style.setProperty(
+      "color",
+      `${favorite ? "#5f27cd" : "#C7C5D0"}`
+    );
+  };
+
+  const handlePlaylist = (e) => {
+    setPlaylist(!playlist);
+    circle2Ref.current.style.setProperty(
+      "color",
+      `${playlist ? "#5f27cd" : "#C7C5D0"}`
+    );
+  };
 
   return (
     <Info>
@@ -22,10 +42,10 @@ const InfoContainer = () => {
           <p>Woodstock </p>
         </div>
         <Links>
-          <Circle onClick={handleClick}>
+          <Circle ref={circle1Ref} onClick={handleFavorite}>
             <RiHeartFill />
           </Circle>
-          <Circle>
+          <Circle ref={circle2Ref} onClick={handlePlaylist}>
             <RiPlayListAddFill />
           </Circle>
           <Circle>
@@ -131,18 +151,21 @@ const Circle = styled.span`
   border-radius: 100%;
   text-align: center;
   font-size: 14px;
+  transition: all 0.3 ease;
+  color: var(--secondary);
   box-shadow: -5px -5px 8px #ffffff, 5px 5px 5px rgba(0, 0, 0, 0.05),
     inset 5px 5px 5px rgba(0, 0, 0, 0.05), inset -5px -5px 11px #ffffff;
 
   &:active {
     box-shadow: inset -5px -5px 8px #ffffff,
       inset 5px 5px 5px rgba(0, 0, 0, 0.05);
+    color: #5f27cd;
   }
 
-  & :hover {
-    color: #666;
-    transition: all 0.3s ease;
-  }
+  // &:hover {
+  //   color: #999;
+  //   transition: all 0.3s ease;
+  // }
 `;
 
 const Links = styled.div`
