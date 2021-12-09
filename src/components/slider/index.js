@@ -109,6 +109,7 @@ const Slider = () => {
           </Time>
         </div>
       </Player>
+      <Line></Line>
     </Wrapper>
   );
 };
@@ -242,4 +243,13 @@ const ProgressBar = styled.input`
     transform: scale(1.1);
     background: linear-gradient(270deg, #5d24d6, #7e74ed);
   }
+`;
+
+const Line = styled.div`
+  height: 50px;
+  width: 3.5px;
+  background: #e1deea;
+  position: absolute;
+  right: 20px;
+  border-radius: 7px;
 `;
