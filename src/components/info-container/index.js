@@ -80,6 +80,7 @@ const Info = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 16px;
   }
 `;
 
@@ -111,7 +112,7 @@ const Data = styled.div`
   }
 
   @media (max-width: 414px) {
-    padding: 20px;
+    padding: 0px;
     text-align: center;
     width: 100%;
   }
@@ -175,6 +176,6 @@ const Links = styled.div`
 
   @media (max-width: 414px) {
     justify-content: space-evenly;
-    margin-top: 15px;
+    margin: 20px 0;
   }
 `;
