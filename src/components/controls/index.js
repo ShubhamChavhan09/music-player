@@ -14,10 +14,11 @@ const Controls = ({ togglePlayPause, isPlaying, backTen, forwardTen }) => {
   const [repeatOne, setRepeatOne] = useState(false);
   const [repeat, setRepeat] = useState(false);
 
-  const shuffleRef = useRef();
-  const repeatOneRef = useRef();
-  const repeatRef = useRef();
+  const shuffleRef = useRef(); // referrence to Shuffle Button
+  const repeatOneRef = useRef(); //referrence to Repeat One button
+  const repeatRef = useRef(); // referrence to Repeat Button
 
+  // Toggle Shuffle Button color
   const handleShuffle = (e) => {
     shuffleRef.current.style.setProperty(
       "color",
@@ -25,6 +26,8 @@ const Controls = ({ togglePlayPause, isPlaying, backTen, forwardTen }) => {
     );
     setShuffle(!shuffle);
   };
+
+  //Toggle Repeat One Button color
   const handleRepeatOne = (e) => {
     setRepeatOne(!repeatOne);
     repeatOneRef.current.style.setProperty(
@@ -32,6 +35,8 @@ const Controls = ({ togglePlayPause, isPlaying, backTen, forwardTen }) => {
       `${!repeatOne ? "#5f27cd" : "#C7C5D0"}`
     );
   };
+
+  // Toggle Repeat Button color
   const handleRepeat = (e) => {
     setRepeat(!repeat);
     repeatRef.current.style.setProperty(
