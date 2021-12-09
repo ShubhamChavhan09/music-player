@@ -65,7 +65,6 @@ const Slider = () => {
       }%`
     );
     setCurrentTime(progressBar.current.value);
-    console.log(audioPlayer.current.duration);
   };
 
   // Forward track by 10sec
