@@ -18,5 +18,4 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin-bottom: 50px;
 `;
