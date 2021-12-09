@@ -63,19 +63,19 @@ const Slider = () => {
   };
 
   const forwardTen = () => {
-    progressBar.current.value = Number(progressBar.current.value + 10);
+    progressBar.current.value = Number(progressBar.current.value) + 10;
     changeRange();
   };
 
   const backTen = () => {
-    progressBar.current.value = Number(progressBar.current.value - 10);
+    progressBar.current.value = Number(progressBar.current.value) - 10;
     changeRange();
   };
 
   return (
     <Wrapper>
+      <audio ref={audioPlayer} src={Purple} preload="metadata"></audio>
       <Player>
-        <audio ref={audioPlayer} src={Purple} preload="metadata"></audio>
         <Controls
           isPlaying={isPlaying}
           togglePlayPause={togglePlayPause}
@@ -99,7 +99,7 @@ const Slider = () => {
             </div>
 
             {/* duration  */}
-            <p>{duration && !isNaN(duration) && calculateTime(duration)}</p>
+            <p>{!isNaN(duration) && duration && calculateTime(duration)}</p>
           </Time>
         </div>
       </Player>
