@@ -9,7 +9,7 @@ import {
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import styled from "styled-components";
 
-const Controls = ({ togglePlayPause, isPlaying }) => {
+const Controls = ({ togglePlayPause, isPlaying, backTen, forwardTen }) => {
   return (
     <ControlBox>
       <Switch>
@@ -18,7 +18,7 @@ const Controls = ({ togglePlayPause, isPlaying }) => {
       </Switch>
       <ButtonContainer>
         <Arrow>
-          <button>
+          <button onClick={backTen}>
             <MdOutlineArrowBackIos />
           </button>
         </Arrow>
@@ -28,7 +28,7 @@ const Controls = ({ togglePlayPause, isPlaying }) => {
           </Button>
         </Span>
         <Arrow>
-          <button>
+          <button onClick={forwardTen}>
             <MdOutlineArrowForwardIos />
           </button>
         </Arrow>
