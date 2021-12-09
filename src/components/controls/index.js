@@ -213,6 +213,10 @@ const Arrow = styled.span`
 `;
 
 const Toggle = styled.span`
+  &:hover {
+    color: #999;
+    transition: all 0.2s ease;
+  }
   &:active {
     color: #5f27cd;
   }

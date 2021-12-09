@@ -164,10 +164,10 @@ const Circle = styled.span`
     color: #5f27cd;
   }
 
-  // &:hover {
-  //   color: #999;
-  //   transition: all 0.3s ease;
-  // }
+  &:hover {
+    color: #999;
+    transition: all 0.2s ease;
+  }
 `;
 
 const Links = styled.div`
