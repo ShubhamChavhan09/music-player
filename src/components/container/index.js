@@ -24,14 +24,13 @@ const Main = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    height: 45.2vh;
+    min-height: 45.2vh;
     width: 100%;
-    margin: 20px;
     padding: 0;
   }
 
   @media (max-width: 414px) {
-    height: 100%;
+    height: 100vh;
     justify-content: flex-start;
   }
 `;

@@ -130,7 +130,7 @@ const Wrapper = styled.div`
   box-shadow: 0px 33px 55px rgba(65, 44, 100, 0.3);
 
   @media (max-width: 768px) {
-    top: 255px;
+    top: 275px;
     right: 0;
     width: 100%;
   }
@@ -138,7 +138,7 @@ const Wrapper = styled.div`
   @media (max-width: 414px) {
     width: 100%;
     inset: 0;
-    top: 375px;
+    top: 405px;
     padding-top: 20px;
     height: 220px;
   }

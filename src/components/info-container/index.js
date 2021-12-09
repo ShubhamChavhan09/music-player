@@ -72,9 +72,10 @@ const Info = styled.div`
 
   @media (max-width: 768px) {
     position: absolute;
-    top: 0;
+    top: 0px;
   }
   @media (max-width: 414px) {
+    top: 30px;
     width: auto;
     height: auto;
     flex-direction: column;
