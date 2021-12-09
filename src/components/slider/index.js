@@ -183,6 +183,7 @@ const ProgressBar = styled.input`
   outline: none;
   border-radius: 20px;
   width: 400px;
+  cursor: pointer;
   box-shadow: -1.5px -1.5px 2.5px #ffffff, 1.5px 1.5px 2.5px rgba(0, 0, 0, 0.05),
     inset 1.5px 1.5px 5px rgba(0, 0, 0, 0.05), inset -1.5px -1.5px 2.5px #ffffff;
 
