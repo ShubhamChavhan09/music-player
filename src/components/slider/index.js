@@ -194,7 +194,7 @@ const ProgressBar = styled.input`
     background: linear-gradient(327.56deg, #5d24d6 19.23%, #7e74ed 81.76%);
     border-radius: 20px;
     position: absolute;
-    top: 2.5px;
+    top: 3px;
     left: 0;
     z-index: 2;
     cursor: pointer;
