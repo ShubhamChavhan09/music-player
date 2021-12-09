@@ -9,7 +9,6 @@ const Slider = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [seekWidth, setSeekWidth] = useState(0);
 
   //referrence
   const slider = useRef(); // for audio component
@@ -56,15 +55,33 @@ const Slider = () => {
   };
 
   const changePlayerCurrentTime = () => {
-    setSeekWidth(`${(progressBar.current.value / duration) * 100 - 1.5}% `);
+    progressBar.current.style.setProperty(
+      "--seek-width",
+      `${(progressBar.current.value / duration) * 100}%`
+    );
     setCurrentTime(progressBar.current.value);
+  };
+
+  const forwardTen = () => {
+    progressBar.current.value = Number(progressBar.current.value + 10);
+    changeRange();
+  };
+
+  const backTen = () => {
+    progressBar.current.value = Number(progressBar.current.value - 10);
+    changeRange();
   };
 
   return (
     <Wrapper>
       <Player>
         <audio ref={slider} src={Purple} preload="none"></audio>
-        <Controls isPlaying={isPlaying} togglePlayPause={togglePlayPause} />
+        <Controls
+          isPlaying={isPlaying}
+          togglePlayPause={togglePlayPause}
+          backTen={backTen}
+          forwardTen={forwardTen}
+        />
         <div>
           <Time>
             <ProgressBar
@@ -73,7 +90,7 @@ const Slider = () => {
               ref={progressBar}
               onChange={changeRange}
             />
-            <Run style={{ width: `${seekWidth}` }}></Run>
+            {/* <Run style={{ width: `${seekWidth}` }}></Run> */}
           </Time>
           <Time>
             {/* current time */}
@@ -162,12 +179,29 @@ const ProgressBar = styled.input`
   box-shadow: -1.5px -1.5px 2.5px #ffffff, 1.5px 1.5px 2.5px rgba(0, 0, 0, 0.05),
     inset 1.5px 1.5px 5px rgba(0, 0, 0, 0.05), inset -1.5px -1.5px 2.5px #ffffff;
 
+  &::before {
+     content: " ";
+    height: 3px;
+    width: var(--seek-width);
+    background: linear-gradient(327.56deg, #5d24d6 19.23%, #7e74ed 81.76%);
+    // background: salmon;
+    border-radius: 20px;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    box-shadow: 0px 2px 3px rgba(43, 72, 180, 0.4);
+       inset 1px 1px 3px rgba(255, 255, 255, 0.4); 
+    
+  }
+
   // for firefox
 
   &::-moz-range-track {
     background: #dedde3;
     position: relative;
-    height: 11px;
+    height: 9px;
     outline: none;
     border-radius: 20px;
   }
@@ -179,10 +213,9 @@ const ProgressBar = styled.input`
   // progress bar firefox
 
   &::-moz-range-progress {
-    background: linear-gradient(270deg, #5d24d6, #7e74ed);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    height: 11px;
+    background:linear-gradient(327.56deg, #5d24d6 19.23%, #7e74ed 81.76%);
+    border-radius:20px;
+    height: 3px;
   }
 
   &::-webkit-slider-thumb {
@@ -194,7 +227,7 @@ const ProgressBar = styled.input`
     border-radius: 100%;
     padding: 8px;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     margin: -2px 0 0 0;
     box-shadow: 0px 3px 5px rgba(98, 75, 242, 0.63),
       inset 10px 10px 15px rgba(255, 255, 255, 0.2);
@@ -204,19 +237,4 @@ const ProgressBar = styled.input`
     transform: scale(1.1);
     background: linear-gradient(270deg, #5d24d6, #7e74ed);
   }
-`;
-
-const Run = styled.div`
-  height: 3px;
-  width: 0;
-  background: linear-gradient(327.56deg, #5d24d6 19.23%, #7e74ed 81.76%);
-  position: absolute;
-  top: 5px;
-  left: 4px;
-  border-radius: 20px;
-  z-index: 0;
-  box-shadow: 0px 2px 3px rgba(43, 72, 180, 0.4),
-    inset 1px 1px 3px rgba(255, 255, 255, 0.4);
-  overflow: hidden;
-  cursor: pointer;
 `;
