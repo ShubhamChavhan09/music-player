@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# What does it do?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The app is a simple Audio player created with React. It shows the details of the current playing audio with album cover, name of the song, artist name and album name. The app can be controlled by buttons 
+to Play and Pause and move forward/backward by 10 seconds. Created using flexbox , styled components and React icons. The app is mobile friendly. 
 
 ## Available Scripts
 
