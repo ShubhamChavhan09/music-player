@@ -1,9 +1,11 @@
-# What does it do?
+# Music Player
+
+## What does it do?
 
 The app is a simple Audio player created with React. It shows the details of the current playing audio with album cover, name of the song, artist name and album name. The app can be controlled by buttons 
 to Play and Pause and move forward/backward by 10 seconds. The app is mobile friendly. 
 
-##What makes it work?
+## What makes it work?
 
 The following technologies/dependencies have been used to create the app:
 
