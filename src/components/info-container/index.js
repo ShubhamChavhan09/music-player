@@ -158,15 +158,14 @@ const Circle = styled.span`
   box-shadow: -5px -5px 8px #ffffff, 5px 5px 5px rgba(0, 0, 0, 0.05),
     inset 5px 5px 5px rgba(0, 0, 0, 0.05), inset -5px -5px 11px #ffffff;
 
+  &:hover {
+    color: #999;
+    transition: all 0.2s ease;
+  }
   &:active {
     box-shadow: inset -5px -5px 8px #ffffff,
       inset 5px 5px 5px rgba(0, 0, 0, 0.05);
     color: #5f27cd;
-  }
-
-  &:hover {
-    color: #999;
-    transition: all 0.2s ease;
   }
 `;
 
