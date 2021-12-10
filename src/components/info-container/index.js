@@ -162,7 +162,6 @@ const Circle = styled.span`
     color: #999;
     transition: all 0.2s ease;
   }
-
   &:active {
     box-shadow: inset -5px -5px 8px #ffffff,
       inset 5px 5px 5px rgba(0, 0, 0, 0.05);
